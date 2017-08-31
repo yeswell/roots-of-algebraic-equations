@@ -43,7 +43,7 @@ Solver::Roots Solver::solve_cubic(double a, double b, double c, double d)
         return solve_quadratic(b, c, d);
     };
 
-    double one_third = 1.0 / 3.0;
+    double one_third = 1 / 3.0;
 
     double a_1 = 1 / a;
     double b_3a_1 = b * a_1 * one_third;
@@ -194,4 +194,16 @@ Solver::Roots Solver::solve_quartic(double a, double b, double c, double d, doub
     }
 
     return Roots {number, roots[0], roots[1], roots[2], roots[3]};
+}
+
+vector <double> Solver::Roots::to_vector()
+{
+    vector <double> roots = {x_1, x_2, x_3, x_4};
+
+    for (int i = number; i < 4; ++i)
+    {
+        roots.pop_back();
+    }
+
+    return roots;
 }
